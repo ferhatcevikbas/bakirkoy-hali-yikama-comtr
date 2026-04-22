@@ -39,7 +39,6 @@ const servicesList = [
 const carpetTypesList = ["Kaymaz Halı", "Makine Halısı", "Makine Yün Halı", "Shaggy Halı", "Floş Halı", "Bambu Halı", "Milas Halı", "Yörük Halısı", "Hereke Halı", "Hint Kilimi", "İpekçe Halı", "Peluş Halı", "Saf Yün Halı", "Isparta Halısı", "Patchwork Halı", "Shaggy El Dokuma", "Çin Halısı", "Nepal Halı", "Step Halı", "İpek Halı", "İran Halısı", "Viskon Halı", "Jüt Halı", "Sisal Halı", "Polyester Halı", "Polipropilen Halı", "Naylon Halı", "Akrilik Halı", "Uşak Halısı", "Yağcıbedir Halısı", "Afgan Halısı", "Antika Halı", "Ladik Halısı"];
 const areasList = ["Bağcılar", "Bahçelievler", "Bakırköy", "Başakşehir", "Güngören", "Küçükçekmece", "Halkalı", "Atakent", "İkitelli", "Sefaköy", "Florya", "Şenlikköy", "Yeşilköy", "Bahçeşehir", "Kayaşehir", "Altınşehir", "Kayabaşı", "Ispartakule", "Esenkent", "Zeytinburnu"];
 
-// Mahalle/Hiper-Lokal SEO Ağı (Anasayfa ve Footer İç Linkleme için)
 const subAreas = ["Zuhuratbaba", "Kartaltepe", "Ataköy 1. Kısım", "Ataköy 2. Kısım", "Yeşilköy", "Yeşilyurt", "Florya", "Şenlikköy", "Osmaniye", "Cevizlik", "Yenimahalle", "Sakızağacı"];
 
 const faqs = [
@@ -68,7 +67,7 @@ const Header = ({ navigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md border-b-4 border-blue-900">
+    <header className="sticky top-0 z-50 bg-white shadow-md border-b-4 border-blue-900 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => navigate('home')}>
@@ -127,7 +126,7 @@ const Header = ({ navigate }) => {
 
 const Footer = ({ navigate }) => {
   return (
-    <footer className="bg-slate-900 text-gray-300 pt-16 pb-8 border-t-4 border-blue-600">
+    <footer className="bg-slate-900 text-gray-300 pt-16 pb-8 border-t-4 border-blue-600 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2">
@@ -154,8 +153,7 @@ const Footer = ({ navigate }) => {
           </div>
         </div>
 
-        {/* SEO Silo İç Linkleme Alanı - Eksiksiz Listeler */}
-        <div className="border-t border-slate-800 mt-12 pt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="border-t border-slate-800 mt-12 pt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
           <div>
             <h4 className="text-white text-lg font-bold mb-6">Halı Yıkama Çeşitleri</h4>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
@@ -196,10 +194,10 @@ const Footer = ({ navigate }) => {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center text-xs">
+        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center text-xs text-center lg:text-left">
           <p className="mb-4 lg:mb-0">&copy; {new Date().getFullYear()} {siteConfig.firmaAdi}. Tüm Hakları Saklıdır.</p>
           
-          <div className="mb-4 lg:mb-0 flex items-center text-slate-500">
+          <div className="mb-4 lg:mb-0 flex items-center text-slate-500 justify-center">
             <span>Altyapı & Tasarım: </span>
             <a 
               href="https://wa.me/905424575150?text=Halı%20yıkama%20web%20sitesi%20tasarımı%20hakkında%20bilgi%20almak%20istiyorum." 
@@ -211,7 +209,7 @@ const Footer = ({ navigate }) => {
             </a>
           </div>
 
-          <div className="flex space-x-4 items-center">
+          <div className="flex space-x-4 items-center justify-center">
             <button onClick={() => navigate('legal', 'Gizlilik Politikası')} className="hover:text-white transition-colors">Gizlilik Politikası</button>
             <span className="text-slate-600">|</span>
             <button onClick={() => navigate('legal', 'KVKK Aydınlatma Metni')} className="hover:text-white transition-colors">KVKK</button>
@@ -322,7 +320,7 @@ const PricingCalculator = ({ pricingData }) => {
   };
 
   return (
-    <div className="bg-slate-900 rounded-3xl p-6 md:p-8 shadow-2xl text-white border border-slate-800">
+    <div className="bg-slate-900 rounded-3xl p-6 md:p-8 shadow-2xl text-white border border-slate-800 w-full max-w-lg mx-auto">
       <div className="flex items-center mb-6">
         <Calculator className="w-8 h-8 text-blue-400 mr-3" />
         <h3 className="text-2xl font-bold">Anında Fiyat Hesapla</h3>
@@ -425,7 +423,6 @@ const PricingCalculator = ({ pricingData }) => {
 const Home = ({ navigate, pricingData }) => {
   const [openFaq, setOpenFaq] = useState(null);
 
-  // Schema 1: LocalBusiness & AggregateRating
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -447,7 +444,6 @@ const Home = ({ navigate, pricingData }) => {
     }
   };
 
-  // Schema 2: VideoObject Schema
   const videoSchema = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
@@ -458,7 +454,6 @@ const Home = ({ navigate, pricingData }) => {
     "contentUrl": `${siteConfig.siteUrl}/tanitim.mp4`
   };
 
-  // Schema 3: FAQPage Schema
   const homeFaqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -473,13 +468,12 @@ const Home = ({ navigate, pricingData }) => {
   };
 
   return (
-    <div className="animate-fadeIn">
+    <div className="animate-fadeIn w-full overflow-x-hidden">
       {injectSchema(localBusinessSchema)}
       {injectSchema(videoSchema)}
       {injectSchema(homeFaqSchema)}
       
-      {/* 1. Hero Section */}
-      <section className="relative bg-slate-900 py-16 lg:py-24 overflow-hidden">
+      <section className="relative bg-slate-900 py-16 lg:py-24 overflow-hidden w-full">
         <div className="absolute inset-0 opacity-40 mix-blend-overlay" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80')", backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -502,16 +496,14 @@ const Home = ({ navigate, pricingData }) => {
               </div>
             </div>
             
-            {/* Fiyat Hesaplama */}
-            <div className="lg:pl-10">
+            <div className="lg:pl-10 w-full">
               <PricingCalculator pricingData={pricingData} />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Trust Factors & Brands */}
-      <section className="bg-slate-800 py-6 border-b-4 border-blue-600">
+      <section className="bg-slate-800 py-6 border-b-4 border-blue-600 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-gray-400 font-semibold text-sm uppercase tracking-wider">
             <span className="flex items-center"><Award className="w-5 h-5 mr-2 text-blue-500" /> TSE Standartları</span>
@@ -522,7 +514,7 @@ const Home = ({ navigate, pricingData }) => {
         </div>
       </section>
 
-      <section className="py-12 bg-white border-b border-gray-100">
+      <section className="py-12 bg-white border-b border-gray-100 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
@@ -549,8 +541,7 @@ const Home = ({ navigate, pricingData }) => {
         </div>
       </section>
 
-      {/* 3. Adım Adım Yıkama Süreci */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Halılarınız Nasıl Yıkanıyor?</h2>
@@ -586,11 +577,10 @@ const Home = ({ navigate, pricingData }) => {
         </div>
       </section>
 
-      {/* 4. Öncesi / Sonrası & SEO İçeriği */}
-      <section className="py-20 bg-white border-t border-gray-200">
+      <section className="py-20 bg-white border-t border-gray-200 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <div className="text-left">
               <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
                 Profesyonel <span className="text-blue-600">{siteConfig.ilce} Halı Yıkama</span> Tesisleri
               </h2>
@@ -608,7 +598,7 @@ const Home = ({ navigate, pricingData }) => {
               </button>
             </div>
             
-            <div className="space-y-8">
+            <div className="space-y-8 w-full">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl group cursor-pointer bg-slate-900 h-64">
                 <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&q=80" alt="Tesisimiz Video" className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -619,12 +609,12 @@ const Home = ({ navigate, pricingData }) => {
                 <div className="absolute bottom-4 left-4 text-white font-bold text-lg drop-shadow-md">Tesis Tanıtım Videosunu İzle</div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 rounded-2xl overflow-hidden shadow-lg border-4 border-white">
-                <div className="relative h-48">
+              <div className="grid grid-cols-2 gap-2 rounded-2xl overflow-hidden shadow-lg border-4 border-white h-48">
+                <div className="relative h-full">
                   <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80" alt="Kirli Halı Yıkama Öncesi" className="w-full h-full object-cover filter contrast-75 brightness-75" />
                   <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">ÖNCESİ</span>
                 </div>
-                <div className="relative h-48">
+                <div className="relative h-full">
                   <img src="https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&q=80" alt="Temiz Halı Yıkama Sonrası" className="w-full h-full object-cover filter contrast-125 brightness-110" />
                   <span className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">SONRASI</span>
                 </div>
@@ -635,8 +625,7 @@ const Home = ({ navigate, pricingData }) => {
         </div>
       </section>
 
-      {/* Görselli SEO Silo Hizmetler */}
-      <section className="py-20 bg-gray-50 border-t border-gray-200">
+      <section className="py-20 bg-gray-50 border-t border-gray-200 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Temizlikte Premium Hizmetler</h2>
@@ -650,7 +639,7 @@ const Home = ({ navigate, pricingData }) => {
                   <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
                   <img src={service.img} alt={`${service.name} ${siteConfig.ilce}`} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <div className="p-8">
+                <div className="p-8 text-left">
                   <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">{service.name}</h3>
                   <p className="text-gray-500 mb-6 line-clamp-2">Tesisimizde {service.name.toLowerCase()} işlemleri en güncel teknolojik makinelerle ve derinlemesine dezenfeksiyon sağlanarak profesyonelce yapılmaktadır.</p>
                   <div className="flex items-center text-blue-600 font-bold text-sm uppercase tracking-wide">
@@ -663,8 +652,7 @@ const Home = ({ navigate, pricingData }) => {
         </div>
       </section>
 
-      {/* 5. Müşteri Yorumları */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900">Müşterilerimiz Ne Diyor?</h2>
@@ -680,7 +668,7 @@ const Home = ({ navigate, pricingData }) => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {reviews.map((review, i) => (
-              <div key={i} className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
+              <div key={i} className="bg-gray-50 p-8 rounded-2xl border border-gray-100 text-left">
                 <div className="flex items-center mb-4">
                   <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">{review.name.charAt(0)}</div>
                   <div className="ml-3">
@@ -698,11 +686,9 @@ const Home = ({ navigate, pricingData }) => {
         </div>
       </section>
 
-      {/* 6. Hiper-Lokal Hizmet Ağı & PAA (Birleşik Kurgu) */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-slate-900 text-white w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Hiper-Lokal Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 text-left">
             <div>
               <h2 className="text-3xl font-extrabold mb-6 flex items-center"><MapPin className="w-8 h-8 text-blue-400 mr-3" /> Hizmet Ağımız</h2>
               <p className="text-gray-400 mb-6">Merkezimiz {siteConfig.ilce}'de olup, aşağıdaki mahallelere ve çevre ilçelere aynı gün ücretsiz servisimiz vardır.</p>
@@ -734,7 +720,6 @@ const Home = ({ navigate, pricingData }) => {
               </div>
             </div>
 
-            {/* Anasayfa SSS Akordiyon */}
             <div>
               <h2 className="text-3xl font-extrabold mb-6 flex items-center"><Info className="w-8 h-8 text-blue-400 mr-3" /> Sıkça Sorulanlar</h2>
               <div className="space-y-4">
@@ -763,8 +748,7 @@ const Home = ({ navigate, pricingData }) => {
         </div>
       </section>
 
-      {/* 7. Uzmanlık Alanlarımız (Halı Çeşitleri İç Linkleme - Anasayfa) */}
-      <section className="py-16 bg-white border-t border-gray-100">
+      <section className="py-16 bg-white border-t border-gray-100 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-extrabold text-slate-900">Yıkama Yaptığımız Halı Türleri</h2>
@@ -787,9 +771,6 @@ const Home = ({ navigate, pricingData }) => {
   );
 };
 
-// ==========================================
-// LEGAL SAYFALAR (Noindex)
-// ==========================================
 const LegalPage = ({ title, type }) => {
   useEffect(() => {
     document.title = `${title} | ${siteConfig.firmaAdi}`;
@@ -819,8 +800,8 @@ const LegalPage = ({ title, type }) => {
   `;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+    <div className="min-h-screen bg-gray-50 py-16 w-full">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100 text-left">
         <h1 className="text-3xl font-extrabold text-slate-900 mb-8">{title}</h1>
         <div className="prose prose-lg prose-blue text-gray-600 max-w-none">
           <p className="whitespace-pre-line">{type === 'KVKK Aydınlatma Metni' ? kvkkText : gizlilikText}</p>
@@ -837,8 +818,8 @@ const ContentPage = ({ title, type, itemName, navigate }) => {
   }, [itemName]);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100">
+    <div className="min-h-screen bg-gray-50 py-16 w-full">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100 text-left">
         <div className="text-blue-600 font-semibold mb-4 tracking-wider uppercase text-sm">
           {type === 'service' ? 'Hizmetlerimiz' : type === 'carpet' ? 'Halı Türleri' : 'Hizmet Bölgelerimiz'}
         </div>
@@ -891,9 +872,9 @@ const FAQPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-gray-50 py-16 w-full">
       {injectSchema(faqSchema)}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-extrabold text-slate-900 mb-4">Sıkça Sorulan Sorular</h1>
           <p className="text-gray-600 text-lg">Merak ettiğiniz tüm detaylar burada.</p>
@@ -917,7 +898,7 @@ const FAQPage = () => {
 
 const PricesPage = ({ pricingData }) => {
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-gray-50 py-16 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-extrabold text-slate-900 mb-4">Güncel Fiyat Listesi</h1>
@@ -925,7 +906,7 @@ const PricesPage = ({ pricingData }) => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2 bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="lg:col-span-2 bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-slate-50">
                 <tr>
@@ -937,8 +918,8 @@ const PricesPage = ({ pricingData }) => {
               <tbody className="bg-white divide-y divide-gray-100">
                 {pricingData.length > 0 ? pricingData.map((item) => (
                   <tr key={item.id} className="hover:bg-blue-50 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.unit}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-left">{item.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-left">{item.unit}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-bold text-blue-600">{item.price} TL</td>
                   </tr>
                 )) : (
@@ -950,7 +931,7 @@ const PricesPage = ({ pricingData }) => {
             </table>
           </div>
 
-          <div className="h-fit sticky top-28">
+          <div className="h-fit sticky top-28 w-full">
             <PricingCalculator pricingData={pricingData} />
           </div>
         </div>
@@ -961,14 +942,14 @@ const PricesPage = ({ pricingData }) => {
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50 py-16">
+    <div className="min-h-screen bg-gray-50 py-16 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-extrabold text-slate-900 mb-4">İletişim</h1>
           <p className="text-gray-600 text-lg">Servis talebi veya sorularınız için bize ulaşın.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
           <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Mesaj Gönderin</h2>
             <form name="iletisim" method="POST" data-netlify="true" className="space-y-6">
@@ -991,7 +972,7 @@ const ContactPage = () => {
             </form>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-8 w-full">
             <div className="bg-slate-900 rounded-3xl p-8 md:p-12 shadow-xl text-white">
               <h2 className="text-2xl font-bold mb-8">İletişim Bilgileri</h2>
               <div className="space-y-6">
@@ -1019,7 +1000,7 @@ const ContactPage = () => {
               </div>
             </div>
 
-            <div className="rounded-3xl overflow-hidden shadow-sm border border-gray-100 h-64 bg-gray-200">
+            <div className="rounded-3xl overflow-hidden shadow-sm border border-gray-100 h-64 bg-gray-200 w-full">
               <iframe 
                 srcDoc={`<html style="height:100%;"><body style="margin:0;padding:0;height:100%;display:flex;align-items:center;justify-content:center;background:#e2e8f0;font-family:sans-serif;color:#475569;"><h2>Harita Modülü: ${siteConfig.ilce}</h2></body></html>`}
                 width="100%" 
@@ -1038,9 +1019,6 @@ const ContactPage = () => {
   );
 };
 
-// ==========================================
-// ANA UYGULAMA (APP COMPONENT & ROUTER)
-// ==========================================
 export default function App() {
   const [route, setRoute] = useState({ page: 'home', param: null });
   const [pricingData, setPricingData] = useState([]);
@@ -1066,10 +1044,6 @@ export default function App() {
         const response = await fetch(siteConfig.sheetsUrl);
         if (!response.ok) throw new Error("Ağ hatası");
         const csvText = await response.text();
-        
-        if (csvText.toLowerCase().includes('<html')) {
-          throw new Error("E-Tablo verisi yerine HTML döndü. Lütfen Google Sheets dosyasının 'Bağlantıya sahip olan herkes' tarafından görüntülenebilir olduğundan emin olun.");
-        }
         
         const regex = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
         const rows = csvText.split(/\r?\n/).filter(row => row.trim().length > 0).map(row => {
@@ -1111,20 +1085,14 @@ export default function App() {
           };
         }).filter(item => item.price > 0 && item.name !== 'Bilinmeyen Hizmet'); 
         
-        if (data.length > 0) {
-          setPricingData(data);
-        } else {
-          throw new Error("Veri çekildi ancak liste boş.");
-        }
+        if (data.length > 0) setPricingData(data);
       } catch (error) {
-        console.error("E-Tablo Verisi Çekilemedi, Fallback veriler yükleniyor:", error);
         setPricingData([
           { id: 1, name: "Makine Halısı Yıkama", unit: "m²", price: 50 },
           { id: 2, name: "Koltuk Takımı Yıkama", unit: "Takım", price: 800 }
         ]);
       }
     };
-    
     fetchPricing();
   }, []);
 
@@ -1144,14 +1112,39 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-white">
+    <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-white w-full overflow-x-hidden">
+      {/* GLOBAL RESET STYLE: 
+          Vite varsayılan CSS'indeki kutu görünümünü zorla iptal eder 
+      */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        #root { 
+          max-width: 100% !important; 
+          margin: 0 !important; 
+          padding: 0 !important; 
+          text-align: left !important;
+          width: 100% !important;
+          display: block !important;
+        }
+        body {
+          margin: 0 !important;
+          padding: 0 !important;
+          display: block !important;
+          place-items: initial !important;
+          overflow-x: hidden !important;
+          width: 100% !important;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+      `}} />
+
       <script dangerouslySetInnerHTML={{
         __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${siteConfig.gtmId}');`
       }} />
 
       <Header navigate={navigate} />
       
-      <main className="flex-grow">
+      <main className="flex-grow w-full">
         {renderPage()}
       </main>
       
@@ -1160,13 +1153,3 @@ export default function App() {
     </div>
   );
 }
-
-// ==========================================
-// AŞAMA 5: NANO BANANA PROMPT LİSTESİ (PREMIUM-LIFESTYLE)
-// ==========================================
-/*
-1. Hero Arkaplan: "PREMIUM-LIFESTYLE. Wide shot inside a modern, highly professional industrial carpet cleaning facility. Clean floors, advanced automated washing machines in the background. Bright, natural lighting mixed with professional industrial LEDs. A worker in a clean blue uniform adjusting a machine. Shot on ARRI Alexa, 50mm lens, f/2.8. Hyper-realistic urban documentary style. NO 3d, NO CGI, NO plastic skin."
-2. SEO Bloğu (Koltuk Yıkama): "PREMIUM-LIFESTYLE. Close-up shot of a professional cleaning worker's hands using a high-end extraction vacuum cleaner on a modern gray fabric sofa in a well-lit living room. Natural window light. Crisp details on the fabric texture and the water being extracted. Hasselblad, 85mm lens, f/1.8, shallow depth of field. NO fake smile, NO render."
-3. Halı Yıkama Kartı: "PREMIUM-LIFESTYLE. Close-up macro shot of a thick traditional Turkish carpet being washed with abundant white foam. Natural texture, realistic water droplets. Editorial lighting. Leica 50mm. NO CGI, NO illustration."
-4. Stor Perde Yıkama Kartı: "PREMIUM-LIFESTYLE. Bright, airy room. A clean, white roller blind (stor perde) being carefully inspected by a professional worker in uniform. Sunlight streaming through the window. Shallow depth of field, 85mm f/1.4. Natural skin texture. NO 3d, NO plastic skin."
-*/
