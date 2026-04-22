@@ -26,7 +26,33 @@ const siteConfig = {
 };
 
 // ==========================================
-// AŞAMA 2: SEO SILO VERİ MİMARİSİ
+// AŞAMA 2: SEO İÇERİK VERİTABANI
+// ==========================================
+const pageContentMap = {
+  "Halı Yıkama": {
+    h1: "Bakırköy Profesyonel Halı Yıkama Fabrikası",
+    text: "Halılarınızı türüne göre ayırarak (Makine, Şaggy, El Dokuma vb.), tam otomatik fırçalı bant sistemli makinelerimizde ve Era111 gibi %100 bitkisel şampuanlarla yıkıyoruz. Hav alma ve detaylı kontrol sonrası poşetlenerek teslim edilir."
+  },
+  "Koltuk Yıkama": {
+    h1: "Yerinde Koltuk Yıkama ve Dezenfeksiyon",
+    text: "Koltuk takımlarınız, kumaşına zarar vermeyen özel solüsyonlar ve sanayi tipi yüksek vakumlu makinelerle yerinde yıkanır. Kumaşın altındaki kir, mite ve bakteriler derinlemesine temizlenir."
+  },
+  "Makine Halısı": {
+    h1: "Makine Halısı Yıkama Merkezimiz",
+    text: "Makine halılarınız, renklerinin karışmaması ve dokusunun bozulmaması için özel yıkama protokollerine tabi tutulur. Sert fırçalar kullanılmadan, halıya nüfuz eden kirler çözülür."
+  },
+  "Ataköy": {
+    h1: "Ataköy Halı ve Koltuk Yıkama Servisi",
+    text: "Ataköy bölgesindeki tüm kısımlara (1. Kısımdan 11. Kısıma kadar) aynı gün ücretsiz servisimiz vardır. Uzman ekibimiz halılarınızı kapınızdan alır, tesisimizde yıkadıktan sonra kısa sürede teslim eder."
+  },
+  "Kartaltepe": {
+    h1: "Kartaltepe Mahallesi Halı Yıkama Hizmeti",
+    text: "Tesisimize çok yakın olan Kartaltepe mahallesine anında servis imkanımız bulunmaktadır. Kartaltepe'nin en çok tercih edilen halı yıkama firması olarak garantili hizmet sunuyoruz."
+  }
+};
+
+// ==========================================
+// AŞAMA 3: VERİ MİMARİSİ
 // ==========================================
 const servicesList = [
   { name: "Halı Yıkama", img: "https://images.unsplash.com/photo-1600166898405-da9535204843?auto=format&fit=crop&q=80&w=800" },
@@ -128,7 +154,7 @@ const Footer = ({ navigate }) => {
   return (
     <footer className="bg-slate-900 text-gray-300 pt-16 pb-8 border-t-4 border-blue-600 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-left">
           <div className="lg:col-span-2">
             <h3 className="text-white text-xl font-bold mb-6">{siteConfig.firmaAdi}</h3>
             <p className="mb-6 text-sm leading-relaxed pr-4">Profesyonel, anti-bakteriyel ve garantili yıkama hizmetleri. Tesisimizde en gelişmiş otomatik makinelerle derinlemesine temizlik sağlanmaktadır.</p>
@@ -194,10 +220,10 @@ const Footer = ({ navigate }) => {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center text-xs text-center lg:text-left">
+        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center text-xs">
           <p className="mb-4 lg:mb-0">&copy; {new Date().getFullYear()} {siteConfig.firmaAdi}. Tüm Hakları Saklıdır.</p>
           
-          <div className="mb-4 lg:mb-0 flex items-center text-slate-500 justify-center">
+          <div className="mb-4 lg:mb-0 flex items-center text-slate-500">
             <span>Altyapı & Tasarım: </span>
             <a 
               href="https://wa.me/905424575150?text=Halı%20yıkama%20web%20sitesi%20tasarımı%20hakkında%20bilgi%20almak%20istiyorum." 
@@ -209,7 +235,7 @@ const Footer = ({ navigate }) => {
             </a>
           </div>
 
-          <div className="flex space-x-4 items-center justify-center">
+          <div className="flex space-x-4 items-center">
             <button onClick={() => navigate('legal', 'Gizlilik Politikası')} className="hover:text-white transition-colors">Gizlilik Politikası</button>
             <span className="text-slate-600">|</span>
             <button onClick={() => navigate('legal', 'KVKK Aydınlatma Metni')} className="hover:text-white transition-colors">KVKK</button>
@@ -339,7 +365,7 @@ const PricingCalculator = ({ pricingData }) => {
         </select>
       </div>
 
-      <div className="space-y-4 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
+      <div className="space-y-4 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar text-left">
         {items.map((item, index) => {
           const itemPrice = calculateItemPrice(item);
           return (
@@ -397,7 +423,7 @@ const PricingCalculator = ({ pricingData }) => {
 
       <div className="mt-6 pt-6 border-t border-slate-700">
         <div className="flex justify-between items-end mb-6">
-          <div>
+          <div className="text-left">
             <p className="text-sm text-gray-400 mb-1">Genel Toplam</p>
             <p className="text-3xl font-extrabold text-white">{totalPrice.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2})} <span className="text-lg text-blue-400 font-medium">TL</span></p>
           </div>
@@ -579,8 +605,8 @@ const Home = ({ navigate, pricingData }) => {
 
       <section className="py-20 bg-white border-t border-gray-200 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center text-left">
+            <div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">
                 Profesyonel <span className="text-blue-600">{siteConfig.ilce} Halı Yıkama</span> Tesisleri
               </h2>
@@ -634,12 +660,12 @@ const Home = ({ navigate, pricingData }) => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicesList.map((service, index) => (
-              <div key={index} onClick={() => navigate('service', service.name)} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all cursor-pointer group">
+              <div key={index} onClick={() => navigate('service', service.name)} className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all cursor-pointer group text-left">
                 <div className="h-56 overflow-hidden relative">
                   <div className="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition-colors z-10"></div>
                   <img src={service.img} alt={`${service.name} ${siteConfig.ilce}`} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <div className="p-8 text-left">
+                <div className="p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">{service.name}</h3>
                   <p className="text-gray-500 mb-6 line-clamp-2">Tesisimizde {service.name.toLowerCase()} işlemleri en güncel teknolojik makinelerle ve derinlemesine dezenfeksiyon sağlanarak profesyonelce yapılmaktadır.</p>
                   <div className="flex items-center text-blue-600 font-bold text-sm uppercase tracking-wide">
@@ -814,8 +840,12 @@ const LegalPage = ({ title, type }) => {
 
 const ContentPage = ({ title, type, itemName, navigate }) => {
   useEffect(() => {
-    document.title = `${itemName} | ${siteConfig.firmaAdi}`;
-  }, [itemName]);
+    document.title = `${itemName || title} | ${siteConfig.firmaAdi}`;
+  }, [itemName, title]);
+
+  const content = itemName && pageContentMap[itemName] ? pageContentMap[itemName] : null;
+  const h1Text = content ? content.h1 : title;
+  const mainText = content ? content.text : `${siteConfig.firmaAdi} olarak, ${type === 'area' ? `${itemName} bölgesindeki müşterilerimize` : `${itemName} konusunda`} en yüksek standartlarda profesyonel temizlik hizmeti sunuyoruz.`;
 
   return (
     <div className="min-h-screen bg-gray-50 py-16 w-full">
@@ -823,21 +853,26 @@ const ContentPage = ({ title, type, itemName, navigate }) => {
         <div className="text-blue-600 font-semibold mb-4 tracking-wider uppercase text-sm">
           {type === 'service' ? 'Hizmetlerimiz' : type === 'carpet' ? 'Halı Türleri' : 'Hizmet Bölgelerimiz'}
         </div>
-        <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-8">{title}</h1>
+        <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-8">{h1Text}</h1>
         
         <div className="prose prose-lg prose-blue text-gray-600 max-w-none">
           <p className="lead text-xl text-gray-800 font-medium mb-6">
-            {siteConfig.firmaAdi} olarak, {type === 'area' ? `${itemName} bölgesindeki müşterilerimize` : `${itemName} konusunda`} en yüksek standartlarda profesyonel temizlik hizmeti sunuyoruz.
+            {mainText}
           </p>
-          <p className="mb-6">
-            Sektördeki tecrübemiz ve gelişmiş tam otomatik makine parkurumuz sayesinde, işlemlerimiz standart yüzey temizliğinin çok ötesine geçer. Halının/Eşyanın en alt hav diplerine inerek kir, toz, akar ve bakterileri %99.9 oranında yok ediyoruz.
-          </p>
-          <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-4">Neden Bizi Tercih Etmelisiniz?</h2>
-          <ul className="space-y-4 mb-8 list-none pl-0">
-            <li className="flex items-start"><ShieldCheck className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" /> Garantili ve sigortalı işlem yapıyoruz.</li>
-            <li className="flex items-start"><Leaf className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" /> Çevre ve insan dostu, bakanlık onaylı şampuanlar kullanıyoruz.</li>
-            <li className="flex items-start"><Truck className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" /> Randevu saatine sadık, ücretsiz servis ağımızla hizmet veriyoruz.</li>
-          </ul>
+          
+          {!content && (
+            <>
+              <p className="mb-6">
+                Sektördeki tecrübemiz ve gelişmiş tam otomatik makine parkurumuz sayesinde, işlemlerimiz standart yüzey temizliğinin çok ötesine geçer. Halının/Eşyanın en alt hav diplerine inerek kir, toz, akar ve bakterileri %99.9 oranında yok ediyoruz.
+              </p>
+              <h2 className="text-2xl font-bold text-slate-900 mt-10 mb-4">Neden Bizi Tercih Etmelisiniz?</h2>
+              <ul className="space-y-4 mb-8 list-none pl-0">
+                <li className="flex items-start"><ShieldCheck className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" /> Garantili ve sigortalı işlem yapıyoruz.</li>
+                <li className="flex items-start"><Leaf className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" /> Çevre ve insan dostu, bakanlık onaylı şampuanlar kullanıyoruz.</li>
+                <li className="flex items-start"><Truck className="w-6 h-6 text-green-500 mr-3 flex-shrink-0" /> Randevu saatine sadık, ücretsiz servis ağımızla hizmet veriyoruz.</li>
+              </ul>
+            </>
+          )}
         </div>
 
         <div className="mt-12 bg-blue-50 rounded-2xl p-8 text-center border border-blue-100">
@@ -850,168 +885,6 @@ const ContentPage = ({ title, type, itemName, navigate }) => {
             <a href={`https://wa.me/${siteConfig.whatsapp}`} className="bg-green-500 text-white font-bold py-3 px-8 rounded-full hover:bg-green-600 transition-colors flex justify-center items-center shadow-lg shadow-green-500/30">
               <MessageCircle className="w-5 h-5 mr-2" /> WhatsApp
             </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const FAQPage = () => {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.a
-      }
-    }))
-  };
-
-  return (
-    <div className="min-h-screen bg-gray-50 py-16 w-full">
-      {injectSchema(faqSchema)}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-extrabold text-slate-900 mb-4">Sıkça Sorulan Sorular</h1>
-          <p className="text-gray-600 text-lg">Merak ettiğiniz tüm detaylar burada.</p>
-        </div>
-        
-        <div className="space-y-6">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-100">
-              <h3 className="text-xl font-bold text-slate-900 mb-3 flex items-start">
-                <Info className="w-6 h-6 text-blue-600 mr-3 flex-shrink-0 mt-0.5" />
-                {faq.q}
-              </h3>
-              <p className="text-gray-600 leading-relaxed ml-9">{faq.a}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const PricesPage = ({ pricingData }) => {
-  return (
-    <div className="min-h-screen bg-gray-50 py-16 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-extrabold text-slate-900 mb-4">Güncel Fiyat Listesi</h1>
-          <p className="text-gray-600 text-lg">Şeffaf fiyatlandırma, sürpriz maliyet yok.</p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div className="lg:col-span-2 bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-slate-50">
-                <tr>
-                  <th scope="col" className="px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">Hizmet Türü</th>
-                  <th scope="col" className="px-6 py-4 text-left text-sm font-bold text-slate-900 uppercase tracking-wider">Birim</th>
-                  <th scope="col" className="px-6 py-4 text-right text-sm font-bold text-slate-900 uppercase tracking-wider">Fiyat</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-100">
-                {pricingData.length > 0 ? pricingData.map((item) => (
-                  <tr key={item.id} className="hover:bg-blue-50 transition-colors">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-left">{item.name}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-left">{item.unit}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-right font-bold text-blue-600">{item.price} TL</td>
-                  </tr>
-                )) : (
-                  <tr>
-                    <td colSpan="3" className="px-6 py-8 text-center text-gray-500">Fiyatlar yükleniyor...</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="h-fit sticky top-28 w-full">
-            <PricingCalculator pricingData={pricingData} />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ContactPage = () => {
-  return (
-    <div className="min-h-screen bg-gray-50 py-16 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-extrabold text-slate-900 mb-4">İletişim</h1>
-          <p className="text-gray-600 text-lg">Servis talebi veya sorularınız için bize ulaşın.</p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left">
-          <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">Mesaj Gönderin</h2>
-            <form name="iletisim" method="POST" data-netlify="true" className="space-y-6">
-              <input type="hidden" name="form-name" value="iletisim" />
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Adınız Soyadınız</label>
-                <input type="text" name="name" required className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Telefon Numaranız</label>
-                <input type="tel" name="phone" required className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Adres veya Mesajınız</label>
-                <textarea name="message" rows="4" required className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"></textarea>
-              </div>
-              <button type="submit" className="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-4 rounded-xl transition-colors">
-                Gönder
-              </button>
-            </form>
-          </div>
-
-          <div className="space-y-8 w-full">
-            <div className="bg-slate-900 rounded-3xl p-8 md:p-12 shadow-xl text-white">
-              <h2 className="text-2xl font-bold mb-8">İletişim Bilgileri</h2>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <MapPin className="w-6 h-6 text-blue-400 mr-4 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-lg">Merkez Fabrika</h4>
-                    <p className="text-gray-300 mt-1">{siteConfig.adres}</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <PhoneCall className="w-6 h-6 text-blue-400 mr-4 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-lg">Telefon</h4>
-                    <p className="text-gray-300 mt-1">{siteConfig.telefon}</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Clock className="w-6 h-6 text-blue-400 mr-4 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-lg">Çalışma Saatleri</h4>
-                    <p className="text-gray-300 mt-1">{siteConfig.calismaSaatleri}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="rounded-3xl overflow-hidden shadow-sm border border-gray-100 h-64 bg-gray-200 w-full">
-              <iframe 
-                srcDoc={`<html style="height:100%;"><body style="margin:0;padding:0;height:100%;display:flex;align-items:center;justify-content:center;background:#e2e8f0;font-family:sans-serif;color:#475569;"><h2>Harita Modülü: ${siteConfig.ilce}</h2></body></html>`}
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen="" 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Konum Haritası"
-              ></iframe>
-            </div>
           </div>
         </div>
       </div>
@@ -1113,9 +986,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-gray-900 bg-white w-full overflow-x-hidden">
-      {/* GLOBAL RESET STYLE: 
-          Vite varsayılan CSS'indeki kutu görünümünü zorla iptal eder 
-      */}
       <style dangerouslySetInnerHTML={{ __html: `
         #root { 
           max-width: 100% !important; 
@@ -1137,10 +1007,6 @@ export default function App() {
         .custom-scrollbar::-webkit-scrollbar-track { background: #1e293b; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
       `}} />
-
-      <script dangerouslySetInnerHTML={{
-        __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${siteConfig.gtmId}');`
-      }} />
 
       <Header navigate={navigate} />
       
